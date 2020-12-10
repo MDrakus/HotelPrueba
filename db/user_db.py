@@ -2,20 +2,46 @@ from typing import  Dict
 from pydantic import BaseModel
 
 class UserInDB(BaseModel):
-    username: str
-    password: str
-    balance: int
+    nombre: str
+    ubicacion: str
+    estrellas: str
+    habitaciones:int
+    tipoHabitacion:Dict[str,Dict[str,int]]
+    servadicional:Dict[str,str]
+    porc_ocu_ult_anno:Dict[str,int]
 
 database_users = Dict[str, UserInDB]
 
 database_users = {
-    "camilo24": UserInDB(**{"username":"camilo24",
-                            "password":"root",
-                            "balance":12000}),
-
-    "andres18": UserInDB(**{"username":"andres18",
-                            "password":"hola",
-                            "balance":34000}),
+    "Hotel1": UserInDB(**{"nombre":"Hotel1",
+                            "ubicacion":"Colombia",
+                            "estrellas":"tres",
+                            "habitaciones":12,
+                            "tipoHabitacion":[{"sencilla":[{"cantidad":4,
+                                                            "preciopromin":70000}],
+                                                   "doble":[{"cantidad":4,
+                                                             "preciopromin":110000}],
+                                                   "triple":[{"cantidad":4,
+                                                             "preciopromin":150000}],
+                                                                }],
+                            "servadicional":[{"lavanderia":"si",
+                                                     "restaurante":"si",
+                                                     "bar":"no",
+                                                     "wifi":"si"}],
+                            "porc_ocu_ult_anno":[{"enero":80,
+                                                  "febrero":70,
+                                                  "marzo":60,
+                                                  "abril":75,
+                                                  "mayo":60,
+                                                  "junio":85,
+                                                  "julio":90,
+                                                  "agosto":80,
+                                                  "septiembre":60,
+                                                  "octubre":70,
+                                                  "noviembre":80,
+                                                  "diciembre":100,
+                                                }]
+                                            }),
 }
 
 def get_user(username: str):
