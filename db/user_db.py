@@ -15,6 +15,37 @@ database_users = Dict[str, UserInDB]
 database_users = {
     "Hotel1": UserInDB(**{"nombre":"Hotel1",
                             "ubicacion":"Colombia",
+                            "estrellas":"cinco",
+                            "habitaciones":30,
+                            "tipoHabitacion":[{"sencilla":[{"cantidad":15,
+                                                            "preciopromin":120000}],
+                                                   "doble":[{"cantidad":10,
+                                                             "preciopromin":200000}],
+                                                   "triple":[{"cantidad":5,
+                                                             "preciopromin":250000}]
+                                                                }],
+                            "servadicional":[{"lavanderia":"si",
+                                                     "restaurante":"si",
+                                                     "bar":"si",
+                                                     "wifi":"si",
+                                                     "cable":"si"}],
+                            "porc_ocu_ult_anno":[{"enero":95,
+                                                  "febrero":80,
+                                                  "marzo":60,
+                                                  "abril":70,
+                                                  "mayo":50,
+                                                  "junio":100,
+                                                  "julio":100,
+                                                  "agosto":70,
+                                                  "septiembre":60,
+                                                  "octubre":70,
+                                                  "noviembre":80,
+                                                  "diciembre":100
+                                                }]
+                                            }),
+
+                                                "Hotel1": UserInDB(**{"nombre":"Hotel1",
+                            "ubicacion":"Colombia",
                             "estrellas":"tres",
                             "habitaciones":12,
                             "tipoHabitacion":[{"sencilla":[{"cantidad":4,
@@ -22,12 +53,13 @@ database_users = {
                                                    "doble":[{"cantidad":4,
                                                              "preciopromin":110000}],
                                                    "triple":[{"cantidad":4,
-                                                             "preciopromin":150000}],
+                                                             "preciopromin":150000}]
                                                                 }],
                             "servadicional":[{"lavanderia":"si",
                                                      "restaurante":"si",
                                                      "bar":"no",
-                                                     "wifi":"si"}],
+                                                     "wifi":"no",
+                                                     "cable":"no"}],
                             "porc_ocu_ult_anno":[{"enero":80,
                                                   "febrero":70,
                                                   "marzo":60,
@@ -39,14 +71,14 @@ database_users = {
                                                   "septiembre":60,
                                                   "octubre":70,
                                                   "noviembre":80,
-                                                  "diciembre":100,
+                                                  "diciembre":100
                                                 }]
                                             }),
 }
 
-def get_user(username: str):
-    if username in database_users.keys():
-        return database_users[username]
+def get_user(nombre: str):
+    if nombre in database_users.keys():
+        return database_users[nombre]
     else:
         return None
 
